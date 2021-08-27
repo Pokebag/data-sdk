@@ -1,8 +1,6 @@
 {
   "all": true,
-  "cache": false,
   "exclude": [],
   "include": ["src/**/*.js"],
-  "reporter": ["lcovonly", "text-summary"],
-  "useSpawnWrap": false
+  "reporter": ["lcovonly", "text-summary"]
 }
