@@ -1,8 +1,16 @@
 /**
+ * @callback Reducer
+ * @param {*} accumulator
+ * @param {string} currentPatch
+ *
+ * @returns {Promise|*}
+ */
+
+/**
  * Async reducer for building a dataset result for a patch.
  *
  * @param {string[]} patches Array of patches to reduce
- * @param {(accumulator: any, currentPatch: string) => Promise<*> | *} reducer May be asynchronous
+ * @param {Reducer} reducer May be asynchronous
  * @param {*} accumulator
  *
  * @returns {Promise<*>} The compiled accumulator
