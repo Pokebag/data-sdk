@@ -2,5 +2,5 @@
   "all": true,
   "exclude": [],
   "include": ["src/**/*.js"],
-  "reporter": ["lcovonly", "text-summary"]
+  "reporter": ["lcovonly", "text"]
 }

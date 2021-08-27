@@ -13,11 +13,11 @@ import { patchReduce } from '../../src/helpers/patchReduce.js'
 
 
 describe('patchReduce', function() {
-	it('should be a function', () => {
+	it('is a function', () => {
 		expect(patchReduce).to.be.a('function')
 	})
 
-	it('should reduce a list of patches', async () => {
+	it('reduces a list of patches', async () => {
 		const PATCHES = [
 			'1',
 			'1',

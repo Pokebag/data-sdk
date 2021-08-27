@@ -13,11 +13,11 @@ import { sortVersions } from '../../src/helpers/sortVersions.js'
 
 
 describe('sortVersions', function() {
-	it('should be a function', () => {
+	it('is a function', () => {
 		expect(sortVersions).to.be.a('function')
 	})
 
-	it('should not mutate its input list', () => {
+	it('doesn\'t mutate its input list', () => {
 		const unsortedVersions = [
 			'1.1.1.6',
 			'1.1.1.5',
@@ -33,7 +33,7 @@ describe('sortVersions', function() {
 		expect(unsortedVersions).to.have.ordered.members(copyOfUnsortedVersions)
 	})
 
-	it('should sort a list of simple versions', () => {
+	it('sorts a list of simple versions', () => {
 		const unsortedVersions = [
 			'1.1.1.6',
 			'1.1.1.5',
@@ -54,7 +54,7 @@ describe('sortVersions', function() {
 		expect(sortVersions(unsortedVersions)).to.have.ordered.members(sortedVersions)
 	})
 
-	it('should sort a list of complex versions', () => {
+	it('sorts a list of complex versions', () => {
 		const unsortedVersions = [
 			'1.1.1.6',
 			'1.1.1.223345',

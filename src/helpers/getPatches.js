@@ -16,15 +16,8 @@ export async function getPatches(maxVersion) {
 	// Get all patches
 	const PATCHES = await getAllPatches()
 
-	if (!maxVersion) {
+	if (!maxVersion || maxVersion === 'latest') {
 		return PATCHES
-	}
-
-	let version = maxVersion
-
-	// Handle version keywords
-	if (maxVersion === 'latest') {
-		version = PATCHES[PATCHES.length - 1]
 	}
 
 	// Find the requested version in the list of patches

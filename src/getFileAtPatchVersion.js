@@ -27,18 +27,12 @@ import { patchReduce } from './helpers/patchReduce.js'
  export async function getFileAtPatchVersion(file, version = 'latest') {
 	const PATCHES = await getPatches(version)
 
-	if (PATCHES.indexOf(version) === -1) {
-		throw new Error(`Pokémon UNITE patch version ${version} is not available.`)
-	}
-
-	const BASE_FILE_CONTENTS = await fs.readFile(path.resolve(DATA_ROOT, 'base', file), 'utf8')
-
-	return patchReduce(PATCHES, async (accumulator, currentPatchVersion) => {
+	return patchReduce(['base', ...PATCHES], async (accumulator, currentPatchVersion) => {
 		try {
 			const FILE_CONTENTS = await fs.readFile(path.resolve(DATA_ROOT, currentPatchVersion, file), 'utf8')
 			return merge(accumulator, JSON.parse(FILE_CONTENTS))
 		} catch(error) {
 			return accumulator
 		}
-	}, JSON.parse(BASE_FILE_CONTENTS))
+	}, null)
 }
