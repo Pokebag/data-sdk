@@ -11,7 +11,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '14'
+        node-version: '16'
 
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
@@ -31,15 +31,20 @@ jobs:
     - name: Test
       run: yarn test
 
-    - name: Send coverage to Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+  # report-coverage:
+  #   needs: test
+  #   runs-on: ubuntu-latest
 
-    - name: Send coverage to Code Climate
-      uses: paambaati/codeclimate-action@v2.6.0
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TEST_REPORTER_ID }}
-      with:
-        coverageCommand: echo ''
-        coverageLocations: ${{ github.workspace }}/coverage/lcov.info:lcov
+  #   steps:
+  #   - name: Send coverage to Coveralls
+  #     uses: coverallsapp/github-action@master
+  #     with:
+  #       github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  #   - name: Send coverage to Code Climate
+  #     uses: paambaati/codeclimate-action@v2.6.0
+  #     env:
+  #       CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TEST_REPORTER_ID }}
+  #     with:
+  #       coverageCommand: echo ''
+  #       coverageLocations: ${{ github.workspace }}/coverage/lcov.info:lcov
