@@ -23,7 +23,7 @@ describe('patchReduce', function() {
 			'1',
 			'1',
 		]
-		const result = await patchReduce(PATCHES, (accumulator, item) => (accumulator + item), 0)
+		const result = await patchReduce(PATCHES, (accumulator, item) => (accumulator + Number(item)), 0)
 
 		expect(result).to.equal(3)
 	})
