@@ -175,7 +175,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.15.0, @babel/core@npm:^7.7.5":
+"@babel/core@npm:7.15.0, @babel/core@npm:^7.7.5, @babel/core@npm:^7.8.7":
   version: 7.15.0
   resolution: "@babel/core@npm:7.15.0"
   dependencies:
@@ -292,6 +292,13 @@ __metadata:
   dependencies:
     "@babel/types": ^7.14.5
   checksum: c7af558c63eb5449bf2249f1236d892ed54a400cb6c721756cde573b996c12c64dee6b57fa18ad1a0025d152e6f689444f7ea32997a1d56e1af66c3eda18843d
+  languageName: node
+  linkType: hard
+
+"@babel/helper-plugin-utils@npm:^7.0.0":
+  version: 7.14.5
+  resolution: "@babel/helper-plugin-utils@npm:7.14.5"
+  checksum: fe20e90a24d02770a60ebe80ab9f0dfd7258503cea8006c71709ac9af1aa3e47b0de569499673f11ea6c99597f8c0e4880ae1d505986e61101b69716820972fe
   languageName: node
   linkType: hard
 
@@ -438,7 +445,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@istanbuljs/load-nyc-config@npm:^1.0.0":
+"@istanbuljs/esm-loader-hook@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "@istanbuljs/esm-loader-hook@npm:0.1.2"
+  dependencies:
+    "@babel/core": ^7.8.7
+    "@istanbuljs/load-nyc-config": ^1.1.0
+    "@istanbuljs/schema": ^0.1.2
+    babel-plugin-istanbul: ^6.0.0
+    test-exclude: ^6.0.0
+  checksum: de9c606e9de0f8162fb58eea42e141a4e3529849afed56b77e0c9f7d9f5d747ef9a251775b30e0176f25126a43321e38336d6fb68b85a21dabaf1f212b2f0eb0
+  languageName: node
+  linkType: hard
+
+"@istanbuljs/load-nyc-config@npm:^1.0.0, @istanbuljs/load-nyc-config@npm:^1.1.0":
   version: 1.1.0
   resolution: "@istanbuljs/load-nyc-config@npm:1.1.0"
   dependencies:
@@ -1526,6 +1546,7 @@ __metadata:
     "@auto-it/first-time-contributor": ^10.31.0
     "@auto-it/npm": ^10.31.0
     "@auto-it/released": ^10.31.0
+    "@istanbuljs/esm-loader-hook": ^0.1.2
     "@pokebag/pokemon-unite-data": ^1.1.1
     all-contributors-cli: ^6.20.0
     auto: ^10.31.0
@@ -2053,6 +2074,19 @@ __metadata:
   version: 1.11.0
   resolution: "aws4@npm:1.11.0"
   checksum: 5a00d045fd0385926d20ebebcfba5ec79d4482fe706f63c27b324d489a04c68edb0db99ed991e19eda09cb8c97dc2452059a34d97545cebf591d7a2b5a10999f
+  languageName: node
+  linkType: hard
+
+"babel-plugin-istanbul@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "babel-plugin-istanbul@npm:6.0.0"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.0.0
+    "@istanbuljs/load-nyc-config": ^1.0.0
+    "@istanbuljs/schema": ^0.1.2
+    istanbul-lib-instrument: ^4.0.0
+    test-exclude: ^6.0.0
+  checksum: bc586cf088ec471a98a474ef0e9361ace61947da2a3e54162f1e1ab712a1a81a88007639e8aff7db2fc8678ae7c671e696e6edd6ccf72db8e6af86f0628d5a08
   languageName: node
   linkType: hard
 
