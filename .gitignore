@@ -1,3 +1,6 @@
+# Project-specific
+types/
+
 # Logs
 logs
 *.log
