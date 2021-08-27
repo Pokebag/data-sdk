@@ -8,7 +8,7 @@ import { getAllPatches } from '../getAllPatches.js'
 /**
  * Returns a limited list of patch versions.
  *
- * @param {string} maxVersion The maximum patch version to return
+ * @param {string} [maxVersion] The maximum patch version to return
  *
  * @returns {Promise<string[]>} List of patches, clamped to the maximum version
  */

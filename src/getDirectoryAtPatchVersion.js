@@ -19,11 +19,11 @@ import { patchReduce } from './helpers/patchReduce.js'
  * Returns the contents of a directory for a particular version in the dataset.
  *
  * @param {string} directory Relative path to a directory inside of the dataset
- * @param {string} version The version of the dataset to use
+ * @param {string} [version=latest] The version of the dataset to use
  *
  * @returns {Promise<string[]>} An array containing a compiled version of the contents of the requested directory
  */
-export async function getDirectoryAtPatchVersion(directory = '', version = 'latest') {
+export async function getDirectoryAtPatchVersion(directory, version = 'latest') {
 	const PATCHES = await getPatches(version)
 
 	if (PATCHES.indexOf(version) === -1) {
