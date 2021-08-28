@@ -8,7 +8,8 @@ import path from 'path'
 
 
 // Local imports
-import { getPatches } from './helpers/getPatches.js'
+import { filterPatches } from './helpers/filterPatches.js'
+import { getPatches } from './getPatches.js'
 import { patchReduce } from './helpers/patchReduce.js'
 
 
@@ -23,10 +24,11 @@ import { patchReduce } from './helpers/patchReduce.js'
  *
  * @returns {Promise<string[]>} An array containing a compiled version of the contents of the requested directory
  */
-export async function getDirectoryAtPatchVersion(directory, version = 'latest') {
-	const PATCHES = await getPatches(version)
+export async function getDirectory(directory, version = 'latest') {
+	const PATCHES = await getPatches()
+	const FILTERED_PATCHES = await filterPatches(PATCHES, version)
 
-	const DIRECTORY_CONTENTS = await patchReduce(['base', ...PATCHES], async (accumulator, currentPatchVersion) => {
+	const DIRECTORY_CONTENTS = await patchReduce(['base', ...FILTERED_PATCHES], async (accumulator, currentPatchVersion) => {
 		try {
 			const DIRECTORY_CONTENTS = await fs.readdir(path.resolve(DATA_ROOT, currentPatchVersion, directory))
 			return accumulator.concat(DIRECTORY_CONTENTS)

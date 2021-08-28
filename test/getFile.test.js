@@ -10,7 +10,7 @@ import {
 	mockData,
 	useMockFS,
 } from './test-helpers/useMockFS.js'
-import { getFileAtPatchVersion } from '../src/getFileAtPatchVersion.js'
+import { getFile } from '../src/getFile.js'
 
 
 
@@ -23,7 +23,7 @@ const FILES_DATA = {}
 
 
 
-describe('getFileAtPatchVersion', () => {
+describe('getFile', () => {
 	useMockFS()
 
 	before('Retrieve file data for all Pokémon in each patch', async () => {
@@ -39,7 +39,7 @@ describe('getFileAtPatchVersion', () => {
 
 			while(pokemonIndex < ALL_POKEMON.length) {
 				const POKEMON = ALL_POKEMON[pokemonIndex]
-				const POKEMON_DATUM = await getFileAtPatchVersion(`pokemon/${POKEMON}.json`, PATCH)
+				const POKEMON_DATUM = await getFile(`pokemon/${POKEMON}.json`, PATCH)
 
 				FILES_DATA[PATCH][POKEMON] = POKEMON_DATUM
 
@@ -51,7 +51,7 @@ describe('getFileAtPatchVersion', () => {
 	})
 
 	it('is a function', () => {
-		expect(getFileAtPatchVersion).to.be.a('function')
+		expect(getFile).to.be.a('function')
 	})
 
 	describe('for each patch', () => {

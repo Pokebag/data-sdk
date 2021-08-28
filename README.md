@@ -16,8 +16,8 @@ This SDK provides methods to simplify working with the `@pokebag/pokemon-unite-d
 
 ## Available Utilities
 
-### `getAllPatches()`
-`getAllPatches()`
+### `getPatches()`
+`getPatches()`
 
 ## Contributors ✨
 

@@ -18,7 +18,7 @@ import { sortVersions } from './helpers/sortVersions.js'
  *
  * @returns {Promise<string[]>} A list of all available patches
  */
-export async function getAllPatches() {
+export async function getPatches() {
 	const PATCHES = await fs.readdir(DATA_ROOT)
 	const FILTERED_PATCHES = PATCHES.filter(item => /^(?:\d+\.)+\d+$/.test(item))
 	return sortVersions(FILTERED_PATCHES)

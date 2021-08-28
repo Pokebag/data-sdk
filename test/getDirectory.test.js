@@ -10,7 +10,7 @@ import {
 	mockData,
 	useMockFS,
 } from './test-helpers/useMockFS.js'
-import { getDirectoryAtPatchVersion } from '../src/getDirectoryAtPatchVersion.js'
+import { getDirectory } from '../src/getDirectory.js'
 
 
 
@@ -23,7 +23,7 @@ const DIRECTORIES_DATA = {}
 
 
 
-describe('getDirectoryAtPatchVersion', function () {
+describe('getDirectory', function () {
 	useMockFS()
 
 	before('Get Pokémon directory contents for each patch', async () => {
@@ -32,14 +32,14 @@ describe('getDirectoryAtPatchVersion', function () {
 		while(patchIndex < mockData.patches.length) {
 			const PATCH = mockData.patches[patchIndex]
 
-			DIRECTORIES_DATA[PATCH] = await getDirectoryAtPatchVersion('pokemon', PATCH)
+			DIRECTORIES_DATA[PATCH] = await getDirectory('pokemon', PATCH)
 
 			patchIndex += 1
 		}
 	})
 
 	it('is a function', () => {
-		expect(getDirectoryAtPatchVersion).to.be.a('function')
+		expect(getDirectory).to.be.a('function')
 	})
 
 	it('returns the latest data if no version is provided', async () => {
@@ -47,7 +47,7 @@ describe('getDirectoryAtPatchVersion', function () {
 			'charizard',
 			...mockData.pokemon,
 		].map(item => `${item}.json`)
-		const DIRECTORY_CONTENTS = await getDirectoryAtPatchVersion('pokemon')
+		const DIRECTORY_CONTENTS = await getDirectory('pokemon')
 
 		expect(DIRECTORY_CONTENTS).to.have.members(AVAILABLE_POKEMON)
 	})

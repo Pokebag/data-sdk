@@ -1,3 +1,3 @@
-export { getAllPatches } from './getAllPatches.js'
-export { getDirectoryAtPatchVersion } from './getDirectoryAtPatchVersion.js'
-export { getFileAtPatchVersion } from './getFileAtPatchVersion.js'
+export { getPatches } from './getPatches.js'
+export { getDirectory } from './getDirectory.js'
+export { getFile } from './getFile.js'
