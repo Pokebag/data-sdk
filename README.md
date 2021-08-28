@@ -1,23 +1,41 @@
 # `@pokebag/data-sdk`
 
-This SDK provides methods to simplify working with the `@pokebag/pokemon-unite-data` dataset.
+## Why Does the Dataset Need Its Own SDK?
 
-## Getting Started
+This data SDK exists to make it easy to work with [Pokébag](https://pokeb.ag)'s Pokémon UNITE dataset ([`@pokebag/pokemon-unite-data`](https://github.com/pokebag/pokemon-unite-data)). The dataset is built with the expectation that the data will undergo _cumulative transclusion_ before being used.
 
-1. Install the SDK with either `npm` or Yarn:
-    ```sh
-    $ npm install @pokebag/data-sdk
-    $ yarn add @pokebag/data-sdk
+### WTF is Cumulative Transclusion?
+
+Cumulative transclusion is a process wherein a complete dataset is compiled by applying ordered patches to a base dataset. This means that, other than the base dataset in `@pokebag/pokemon-unite-data`, no part of the dataset is complete. Rather, all patches beyond the base dataset include only the changes that were made in that patch.
+
+As a contrived example:
+
+* The base dataset contains a data file with a complete view of Charizard.
+    ```json
+    {
+      "displayName": "Charizard",
+      "stats": {
+        "attack": 15,
+        "defense": 20
+      },
+    }
     ```
-1. Import the package into your Node project:
-    ```js
-    import * as PokebagDataSDK from '@pokebag/data-sdk'
+* In the base dataset, Charizard's attack is 15.
+* In patch 1.1.1.8, Charizard's attack is increased to 20.
+* For patches 1.1.1.1 through 1.1.1.7, there will be no data for Charizard.
+* In patch 1.1.1.8, there will be a file for Charizard. The only data in the file will be empty, except for the upgrade to Charizard's attack.
+    ```json
+    {
+      "stats": {
+        "attack": 15
+      },
+    }
     ```
 
-## Available Utilities
+This expectation of cumulative transclusion makes it impossible to just retrieve the files for a single patch. Instead, the base dataset must be compiled, then **all** of the patch files must applied to the base dataset to get a complete view of the dataset for a specific patch.
 
-### `getPatches()`
-`getPatches()`
+## What's Pokébag?
+[Pokébag](https://pokeb.ag) is a website for Pokémon fans! We're currently focused on providing really great content for Pokémon UNITE players, but we'll eventually expand to cover far more Pokémon games. Check it out at https://pokeb.ag.
 
 ## Contributors ✨
 
