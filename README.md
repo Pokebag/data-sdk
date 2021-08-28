@@ -1,4 +1,26 @@
-# `@pokebag/data-sdk`
+<div align="center">
+  <h1><code>@pokebag/data-sdk</code></h1>
+
+  <hr />
+</div>
+
+[![Version][version-badge]][package]
+[![BSD-3-Clause License][license-badge]][license]
+[![Downloads][downloads-badge]][npmtrends]
+[![Bundle size][bundlephobia-badge]][bundlephobia]
+
+[![Test status][test-status-badge]][test-status]
+[![Build status][build-status-badge]][build-status]
+[![Code Coverage][coveralls-badge]][coveralls]
+[![Dependencies][daviddm-badge]][daviddm]
+[![Maintainability][codeclimate-badge]][codeclimate]
+
+[![Code of Conduct][code-of-conduct-badge]][code-of-conduct]
+[![PRs Welcome][prs-badge]][prs]
+
+[![Watch on GitHub][github-watch-badge]][github-watch]
+[![Star on GitHub][github-star-badge]][github-star]
+[![Tweet][twitter-badge]][twitter]
 
 ## Why Does the Dataset Need Its Own SDK?
 
@@ -56,3 +78,36 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+
+
+
+
+[bundlephobia]: https://bundlephobia.com/package/@pokebag/data-sdk
+[bundlephobia-badge]: https://img.shields.io/bundlephobia/minzip/pokebag/data-sdk?style=flat-square
+[code-of-conduct]: CODE_OF_CONDUCT.md
+[code-of-conduct-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
+[codeclimate]: https://codeclimate.com/github/Pokebag/data-sdk
+[codeclimate-badge]: https://img.shields.io/codeclimate/maintainability/Pokebag/data-sdk.svg?style=flat-square
+[coveralls]: https://coveralls.io/github/Pokebag/data-sdk
+[coveralls-badge]: https://img.shields.io/coveralls/Pokebag/data-sdk.svg?style=flat-square
+[daviddm]: https://david-dm.org/Pokebag/data-sdk
+[daviddm-badge]: https://img.shields.io/david/Pokebag/data-sdk.svg?style=flat-square
+[downloads-badge]: https://img.shields.io/npm/dm/@pokebag/data-sdk.svg?style=flat-square
+[github-watch]: https://github.com/Pokebag/data-sdk/watchers
+[github-watch-badge]: https://img.shields.io/github/watchers/Pokebag/data-sdk.svg?style=social
+[github-star]: https://github.com/Pokebag/data-sdk/stargazers
+[github-star-badge]: https://img.shields.io/github/stars/Pokebag/data-sdk.svg?style=social
+[license]: LICENSE
+[license-badge]: https://img.shields.io/npm/l/@pokebag/data-sdk.svg?style=flat-square
+[npmtrends]: https://www.npmtrends.com/@pokebag/data-sdk
+[package]: https://npmjs.com/package/@pokebag/data-sdk
+[prs]: CONTRIBUTING.md
+[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[release-status]: https://github.com/pokebag/data-sdk/actions/workflows/release.yml
+[release-status-badge]: https://img.shields.io/github/workflow/status/Pokebag/data-sdk/Release?style=flat-square&label=release
+[test-status]: https://github.com/pokebag/data-sdk/actions/workflows/test.yml
+[test-status-badge]: https://img.shields.io/github/workflow/status/Pokebag/data-sdk/Test?style=flat-square&label=tests
+[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20@pokebag/data-sdk%20by%20%40PokebagApp%20https%3A%2F%2Fgithub.com%2FPokebag%2Fdata-sdk%20%F0%9F%91%8D
+[twitter-badge]: https://img.shields.io/twitter/url/https/github.com/Pokebag/data-sdk.svg?style=social
+[version-badge]: https://img.shields.io/npm/v/@pokebag/data-sdk.svg?style=flat-square
