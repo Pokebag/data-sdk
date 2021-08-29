@@ -1473,6 +1473,7 @@ __metadata:
     mock-fs: ^5.0.0
     nyc: ^15.1.0
     semantic-release: ^17.4.7
+    semantic-release-npm-deprecate-old-versions: ^1.1.6
     sinon: ^11.1.2
     tsd-jsdoc: ^2.5.0
   languageName: unknown
@@ -3257,7 +3258,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^4.0.0":
+"execa@npm:^4.0.0, execa@npm:^4.0.3":
   version: 4.1.0
   resolution: "execa@npm:4.1.0"
   dependencies:
@@ -7285,6 +7286,16 @@ resolve@^1.10.0:
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
   checksum: cab8f25ae6f1434abee8d80023d7e72b598cf1327164ddab31003c51215526801e40b66c5e65d658a0af1e9d6478cadcb4c745f4bd6751f97d8644786c0978b0
+  languageName: node
+  linkType: hard
+
+"semantic-release-npm-deprecate-old-versions@npm:^1.1.6":
+  version: 1.1.6
+  resolution: "semantic-release-npm-deprecate-old-versions@npm:1.1.6"
+  dependencies:
+    execa: ^4.0.3
+    semver: ^7.3.2
+  checksum: 5140edc2a3a32f46b5f585303efe999bccff1c0201c971884b9f39308a3c6b56418500d217cdeb3af034f327158193a03c76fec2c9d8c935dd8d4bceca4a93f2
   languageName: node
   linkType: hard
 
