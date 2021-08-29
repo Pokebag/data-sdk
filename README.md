@@ -10,7 +10,7 @@
 [![Bundle size][bundlephobia-badge]][bundlephobia]
 
 [![Test status][test-status-badge]][test-status]
-[![Build status][build-status-badge]][build-status]
+[![Build status][release-status-badge]][release-status]
 [![Code Coverage][coveralls-badge]][coveralls]
 [![Dependencies][daviddm-badge]][daviddm]
 [![Maintainability][codeclimate-badge]][codeclimate]
