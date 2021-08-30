@@ -37,7 +37,7 @@ export async function getSkills(options) {
 	}
 
 	if (typeof options.ids !== 'undefined') {
-		throw new TypeError('ids and pokemonIDs may not be used in conjunction; you must choose one')
+		throw new TypeError('ids and pokemonIDs may not be used together; you must choose one')
 	}
 
 	const ALL_SKILLS = await getDirectory('skills', patch)
