@@ -45,6 +45,28 @@ describe('getPokemon', function () {
 				})
 			})
 		})
+
+		describe('options.includeSkills', () => {
+			it('given true, return each Pokémon with their associated skills', async () => {
+				const POKEMON_ID = 'crustle'
+				const POKEMON_DATA = {
+					...mockData.pokemon[POKEMON_ID],
+					skills: Object.values(mockData.skills).reduce((accumulator, skill) => {
+						if (skill.id.startsWith(POKEMON_ID)) {
+							accumulator.push(skill)
+						}
+						return accumulator
+					}, []),
+				}
+				const RESPONSE = await getPokemon({
+					ids: [POKEMON_ID],
+					includeSkills: true,
+				})
+
+				expect(RESPONSE).to.be.an('array')
+				expect(RESPONSE[0]).to.deep.equal(POKEMON_DATA)
+			})
+		})
 	})
 
 	describe('with invalid arguments', () => {

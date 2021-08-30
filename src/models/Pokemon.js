@@ -1,3 +1,10 @@
+// Local imports
+import './Skill.js'
+
+
+
+
+
 /**
  * Ratings for a Pokémon
  * @typedef {Object} PokemonRatings
@@ -34,5 +41,6 @@
  * @property {string} damageType
  * @property {PokemonTags} tags
  * @property {PokemonRatings} ratings
+ * @property {Skill[]} skills
  * @property {PokemonStat[]} stats
  */
