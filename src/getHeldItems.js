@@ -20,14 +20,8 @@ export async function getHeldItems(options = {}) {
 		throw new TypeError('options must be an object')
 	}
 
-	const {
-		ids,
-		patch,
-	} = options
-
 	return getEntities({
-		ids,
-		patch,
+		...options,
 		type: 'held-items',
 	})
 }

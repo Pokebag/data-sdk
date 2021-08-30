@@ -27,6 +27,10 @@ export async function getEntities(options) {
 	} = options
 	let { ids } = options
 
+	if (typeof type !== 'string') {
+		throw new TypeError('type must be a string')
+	}
+
 	// If no ids provided, get all entities
 	if (typeof ids === 'undefined') {
 		ids = await getDirectory(type, patch)
@@ -48,6 +52,6 @@ export async function getEntities(options) {
 
 	// If ids is an array of strings, get
 	return Promise.all(ids.map(filename => {
-		return getFile(`${type}/${filename}`)
+		return getFile(`${type}/${filename}`, patch)
 	}))
 }

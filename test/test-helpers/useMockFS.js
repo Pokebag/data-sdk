@@ -63,6 +63,30 @@ const POKEMON = POKEMON_IDS.reduce((accumulator, id, index) => {
 	return accumulator
 }, {})
 
+const SKILL_IDS = [
+	'absol-attack',
+	'absol-feint',
+	'crustle-attack',
+	'crustle-fury-cutter',
+	'garchomp-attack',
+	'garchomp-dig',
+	'lucario-attack',
+	'lucario-bone-rush',
+	'pikachu-attack',
+]
+const SKILLS = SKILL_IDS.reduce((accumulator, id, index) => {
+	accumulator[id] = {
+		displayName: id.replace(/(?:^\w|-\w)/g, match => {
+			return match.toUpperCase().replace('-', ' ')
+		}),
+		id,
+		value1: index,
+		value2: 20,
+	}
+
+	return accumulator
+}, {})
+
 const MOCKED_FS = {
 	[DATA_ROOT]: Array(10).fill(null).reduce((accumulator, _, index) => {
 		function reducer(accumulator, [key, value], itemIndex) {
@@ -76,6 +100,7 @@ const MOCKED_FS = {
 		const [key, data] = generatePatchData(((index === 0) ? 'base' : String(index)), {
 			'held-items': Object.entries(HELD_ITEMS).reduce(reducer, {}),
 			pokemon: Object.entries(POKEMON).reduce(reducer, {}),
+			skills: Object.entries(SKILLS).reduce(reducer, {}),
 		})
 
 		accumulator[key] = data
@@ -112,4 +137,6 @@ export const mockData = {
 	patches,
 	pokemon: POKEMON,
 	pokemonIDs: POKEMON_IDS,
+	skillIDs: SKILL_IDS,
+	skills: SKILLS,
 }
