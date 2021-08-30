@@ -45,6 +45,29 @@ describe('getSkills', function () {
 				})
 			})
 		})
+
+		describe('options.pokemonIDs', () => {
+			it('given an array of Pokémon IDs, returns all skills that belong to the listed Pokémon', async () => {
+				const POKEMON_IDS = ['crustle', 'garchomp']
+				const SKILL_DATA = Object.entries(mockData.skills)
+					.filter(([skillID]) => {
+						return POKEMON_IDS.some(pokemonID => {
+							return skillID.startsWith(pokemonID)
+						})
+					})
+					.map(([_, skillData]) => skillData)
+				const RESPONSE = await getSkills({ pokemonIDs: POKEMON_IDS })
+
+				expect(RESPONSE).to.be.an('object')
+					.and.to.have.all.keys(POKEMON_IDS)
+
+				const ALL_SKILLS_FROM_RESPONSE = Object.values(RESPONSE).flat()
+
+				SKILL_DATA.forEach(skill => {
+					expect(ALL_SKILLS_FROM_RESPONSE).to.deep.include(skill)
+				})
+			})
+		})
 	})
 
 	describe('with invalid arguments', () => {
@@ -76,11 +99,23 @@ describe('getSkills', function () {
 		})
 
 		describe('given a string as options', () => {
-			const errorStuff = [TypeError, 'options must be an object']
-
 			it('throws an error', async () => {
+				const errorStuff = [TypeError, 'options must be an object']
+
 				// @ts-ignore
 				expect(getSkills('mr-mime')).to.eventually.throw(...errorStuff)
+			})
+		})
+
+		describe('given an object', () => {
+			describe('options.pokemonIDs', () => {
+				describe('given `null` as pokemonIDs', () => {
+					it('throws an error', async () => {
+						expect(getSkills({
+							pokemonIDs: ['crustle', 'garchomp'],
+						})).to.eventually.throw(TypeError, 'options must be an object')
+					})
+				})
 			})
 		})
 	})
