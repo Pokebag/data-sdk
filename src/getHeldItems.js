@@ -15,13 +15,9 @@ import { getEntities } from './api/index.js'
  *
  * @returns {Promise<HeldItem[]>} An array containing data for each item requested
  */
-export async function getHeldItems(options = {}) {
-	if ((typeof options !== 'object') || Array.isArray(options)) {
-		throw new TypeError('options must be an object')
-	}
-
+export async function getHeldItems(options) {
 	return getEntities({
-		...options,
+		...options || {},
 		type: 'held-items',
 	})
 }
