@@ -17,6 +17,10 @@ import { getFile } from './getFile.js'
  * @returns {Promise<Object[]>} An array containing data for each item requested
  */
 export async function getEntities(options) {
+	if ((typeof options !== 'object') || Array.isArray(options)) {
+		throw new TypeError('options must be an object')
+	}
+
 	const {
 		patch,
 		type,

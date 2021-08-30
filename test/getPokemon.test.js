@@ -10,38 +10,38 @@ import {
 	mockData,
 	useMockFS,
 } from './test-helpers/useMockFS.js'
-import { getHeldItems } from '../src/getHeldItems.js'
+import { getPokemon } from '../src/getPokemon.js'
 
 
 
 
 
-describe('getHeldItems', function () {
+describe('getPokemon', function () {
 	useMockFS()
 
 	it('is a function', () => {
-		expect(getHeldItems).to.be.a('function')
+		expect(getPokemon).to.be.a('function')
 	})
 
 	describe('with no options', () => {
-		it('returns all held items', async () => {
-			const HELD_ITEMS_ARRAY = Object.values(mockData.heldItems)
-			const RESPONSE = await getHeldItems()
+		it('returns all Pokémon', async () => {
+			const POKEMON_ARRAY = Object.values(mockData.pokemon)
+			const RESPONSE = await getPokemon()
 
-			expect(RESPONSE).to.deep.equal(HELD_ITEMS_ARRAY)
+			expect(RESPONSE).to.deep.equal(POKEMON_ARRAY)
 		})
 	})
 
 	describe('with valid arguments', () => {
 		describe('options.ids', () => {
-			it('given an array of item IDs, returns each held item in the array', async () => {
-				const HELD_ITEM_IDS = ['aeos-cookie', 'buddy-barrier']
-				const HELD_ITEM_DATA = HELD_ITEM_IDS.map(id => mockData.heldItems[id])
-				const RESPONSE = await getHeldItems({ ids: HELD_ITEM_IDS })
+			it('given an array of Pokémon IDs, returns each Pokémon in the array', async () => {
+				const POKEMON_IDS = ['crustle', 'zeraora']
+				const POKEMON_DATA = POKEMON_IDS.map(id => mockData.pokemon[id])
+				const RESPONSE = await getPokemon({ ids: POKEMON_IDS })
 
 				expect(RESPONSE).to.be.an('array')
 				RESPONSE.forEach((item, index) => {
-					expect(item).to.deep.equal(HELD_ITEM_DATA[index])
+					expect(item).to.deep.equal(POKEMON_DATA[index])
 				})
 			})
 		})
@@ -50,7 +50,7 @@ describe('getHeldItems', function () {
 			it('given a patch version, returns only Pokémon that would be available in that patch', async () => {
 				// const POKEMON_IDS = ['crustle', 'zeraora']
 				// const POKEMON_DATA = POKEMON_IDS.map(id => mockData.pokemon[id])
-				// const RESPONSE = await getHeldItems({ ids: POKEMON_IDS })
+				// const RESPONSE = await getPokemon({ ids: POKEMON_IDS })
 
 				// expect(RESPONSE).to.be.an('array')
 				// RESPONSE.forEach((item, index) => {
@@ -66,7 +66,7 @@ describe('getHeldItems', function () {
 				const errorStuff = [TypeError, 'options must be an object']
 
 				// @ts-ignore
-				expect(getHeldItems(null)).to.eventually.throw(...errorStuff)
+				expect(getPokemon(null)).to.eventually.throw(...errorStuff)
 			})
 		})
 
@@ -75,7 +75,7 @@ describe('getHeldItems', function () {
 				const errorStuff = [TypeError, 'options must be an object']
 
 				// @ts-ignore
-				expect(getHeldItems([])).to.eventually.throw(...errorStuff)
+				expect(getPokemon([])).to.eventually.throw(...errorStuff)
 			})
 		})
 
@@ -84,7 +84,7 @@ describe('getHeldItems', function () {
 				const errorStuff = [TypeError, 'options must be an object']
 
 				// @ts-ignore
-				expect(getHeldItems(12345)).to.eventually.throw(...errorStuff)
+				expect(getPokemon(12345)).to.eventually.throw(...errorStuff)
 			})
 		})
 
@@ -93,7 +93,7 @@ describe('getHeldItems', function () {
 
 			it('throws an error', async () => {
 				// @ts-ignore
-				expect(getHeldItems('mr-mime')).to.eventually.throw(...errorStuff)
+				expect(getPokemon('mr-mime')).to.eventually.throw(...errorStuff)
 			})
 		})
 
@@ -104,7 +104,7 @@ describe('getHeldItems', function () {
 						const errorStuff = [TypeError, 'ids must be an array of strings']
 
 						// @ts-ignore
-						expect(getHeldItems({ ids: null })).to.eventually.throw(...errorStuff)
+						expect(getPokemon({ ids: null })).to.eventually.throw(...errorStuff)
 					})
 				})
 
@@ -113,7 +113,7 @@ describe('getHeldItems', function () {
 						const errorStuff = [TypeError, 'ids must be an array of strings']
 
 						// @ts-ignore
-						expect(getHeldItems({ ids: {} })).to.eventually.throw(...errorStuff)
+						expect(getPokemon({ ids: {} })).to.eventually.throw(...errorStuff)
 					})
 				})
 
@@ -122,7 +122,7 @@ describe('getHeldItems', function () {
 						const errorStuff = [TypeError, 'ids must be an array of strings']
 
 						// @ts-ignore
-						expect(getHeldItems({ ids: 'foo' })).to.eventually.throw(...errorStuff)
+						expect(getPokemon({ ids: 'foo' })).to.eventually.throw(...errorStuff)
 					})
 				})
 
@@ -131,7 +131,7 @@ describe('getHeldItems', function () {
 						const errorStuff = [TypeError, 'ids must be an array of strings']
 
 						// @ts-ignore
-						expect(getHeldItems({ ids: 12345 })).to.eventually.throw(...errorStuff)
+						expect(getPokemon({ ids: 12345 })).to.eventually.throw(...errorStuff)
 					})
 				})
 
@@ -141,7 +141,7 @@ describe('getHeldItems', function () {
 							const errorStuff = [TypeError, 'ids must be an array of strings']
 
 							// @ts-ignore
-							expect(getHeldItems({ ids: [null] })).to.eventually.throw(...errorStuff)
+							expect(getPokemon({ ids: [null] })).to.eventually.throw(...errorStuff)
 						})
 					})
 
@@ -150,7 +150,7 @@ describe('getHeldItems', function () {
 							const errorStuff = [TypeError, 'ids must be an array of strings']
 
 							// @ts-ignore
-							expect(getHeldItems({ ids: [{}] })).to.eventually.throw(...errorStuff)
+							expect(getPokemon({ ids: [{}] })).to.eventually.throw(...errorStuff)
 						})
 					})
 
@@ -159,7 +159,7 @@ describe('getHeldItems', function () {
 							const errorStuff = [TypeError, 'ids must be an array of strings']
 
 							// @ts-ignore
-							expect(getHeldItems({ ids: [[]] })).to.eventually.throw(...errorStuff)
+							expect(getPokemon({ ids: [[]] })).to.eventually.throw(...errorStuff)
 						})
 					})
 
@@ -168,7 +168,7 @@ describe('getHeldItems', function () {
 							const errorStuff = [TypeError, 'ids must be an array of strings']
 
 							// @ts-ignore
-							expect(getHeldItems({ ids: [12345] })).to.eventually.throw(...errorStuff)
+							expect(getPokemon({ ids: [12345] })).to.eventually.throw(...errorStuff)
 						})
 					})
 				})
