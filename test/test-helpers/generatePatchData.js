@@ -8,7 +8,7 @@
  */
 export function generatePatchData(versionMod, data = {}) {
 	return [
-		`1.1.1.${versionMod}`,
+		(versionMod === 'base') ? 'base' : `1.1.1.${versionMod}`,
 		{
 			'details.json': JSON.stringify({
 				notes: `Patch notes for version 1.1.1.${versionMod}`,

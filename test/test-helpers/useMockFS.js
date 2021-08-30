@@ -14,69 +14,31 @@ import { generatePatchData } from './generatePatchData.js'
 
 
 // Constants
-const heldItems = {
-	'aeos-cookie.json': JSON.stringify({
-		displayName: 'Aeos Cookie',
-		id: 'aeos-cookie',
-		value1: 20,
+const HELD_ITEM_IDS = [
+	'aeos-cookie',
+	'attack-weight',
+	'buddy-barrier',
+	'energy-amplifier',
+	'exp-share',
+	'float-stone',
+	'focus-band',
+	'rocky-helmet',
+	'shell-bell',
+]
+const HELD_ITEMS = HELD_ITEM_IDS.reduce((accumulator, id, index) => {
+	accumulator[id] = {
+		displayName: id.replace(/(?:^\w|-\w)/g, match => {
+			return match.toUpperCase().replace('-', ' ')
+		}),
+		id,
+		value1: index,
 		value2: 20,
-	}),
-	'attack-weight.json': JSON.stringify({
-		displayName: 'Attack Weight',
-		id: 'attack-weight',
-		value1: 0,
-		value2: 20,
-	}),
-	'buddy-barrier.json': JSON.stringify({
-		displayName: 'Buddy Barrier',
-		id: 'buddy-barrier',
-		value1: 1,
-		value2: 20,
-	}),
-	'energy-amplifier.json': JSON.stringify({
-		displayName: 'Energy Amplifier',
-		id: 'energy-amplifier',
-		value1: 2,
-		value2: 20,
-	}),
-	'exp-share.json': JSON.stringify({
-		displayName: 'Exp. Share',
-		id: 'exp-share',
-		value1: 3,
-		value2: 20,
-	}),
-	'float-stone.json': JSON.stringify({
-		displayName: 'Float Stone',
-		id: 'float-stone',
-		value1: 4,
-		value2: 20,
-	}),
-	'focus-band.json': JSON.stringify({
-		displayName: 'Focus Band',
-		id: 'focus-band',
-		value1: 5,
-		value2: 20,
-	}),
-	'rocky-helmet.json': JSON.stringify({
-		displayName: 'Rocky Helmet',
-		id: 'rocky-helmet',
-		value1: 6,
-		value2: 20,
-	}),
-	'shell-bell.json': JSON.stringify({
-		displayName: 'Shell Bell',
-		id: 'shell-bell',
-		value1: 7,
-		value2: 20,
-	}),
-	'wise-glasses.json': JSON.stringify({
-		displayName: 'Wise Glasses',
-		id: 'wise-glasses',
-		value1: 8,
-		value2: 20,
-	}),
-}
-const pokemon = [
+	}
+
+	return accumulator
+}, {})
+
+const POKEMON_IDS = [
 	'absol',
 	'crustle',
 	'mr-mime',
@@ -88,55 +50,41 @@ const pokemon = [
 	'wigglytuff',
 	'zeraora',
 ]
-const mockedFS = {
+const POKEMON = POKEMON_IDS.reduce((accumulator, id, index) => {
+	accumulator[id] = {
+		displayName: id.replace(/(?:^\w|-\w)/g, match => {
+			return match.toUpperCase().replace('-', ' ')
+		}),
+		id,
+		value1: index,
+		value2: 20,
+	}
+
+	return accumulator
+}, {})
+
+const MOCKED_FS = {
 	[DATA_ROOT]: Array(10).fill(null).reduce((accumulator, _, index) => {
-		const heldItemsForPatch = Object.entries(heldItems).reduce((accumulator, [key, value], itemIndex) => {
-			if (itemIndex <= index) {
-				accumulator[key] = value
+		function reducer(accumulator, [key, value], itemIndex) {
+			if ((itemIndex === 0) || (itemIndex <= index)) {
+				accumulator[`${key}.json`] = JSON.stringify(value)
 			}
 
 			return accumulator
-		}, {})
-
-		const pokemonForPatch = {
-			'charizard.json': JSON.stringify({
-				value1: index,
-				value2: 20,
-			}),
-			[`${pokemon[index]}.json`]: JSON.stringify({
-				value1: index,
-				value2: 20,
-			}),
 		}
 
-		const [key, data] = generatePatchData(String(index), {
-			heldItems: heldItemsForPatch,
-			pokemon: pokemonForPatch,
+		const [key, data] = generatePatchData(((index === 0) ? 'base' : String(index)), {
+			'held-items': Object.entries(HELD_ITEMS).reduce(reducer, {}),
+			pokemon: Object.entries(POKEMON).reduce(reducer, {}),
 		})
 
 		accumulator[key] = data
 
 		return accumulator
-	}, {
-		'base': {
-			heldItems: {
-				'special-attack-specs.json': JSON.stringify({
-					displayName: 'Sp. Atk Specs',
-					value1: 0,
-					value2: 20,
-				}),
-			},
-			pokemon: {
-				'charizard.json': JSON.stringify({
-					value1: 0,
-					value2: 20,
-				}),
-			},
-		},
-	}),
+	}, {}),
 }
 
-const datasets = Object.keys(mockedFS[DATA_ROOT])
+const datasets = Object.keys(MOCKED_FS[DATA_ROOT])
 const patches = datasets.filter(item => item !== 'base')
 
 
@@ -148,7 +96,7 @@ const patches = datasets.filter(item => item !== 'base')
  */
 export function useMockFS() {
 	before('Mock the filesystem for UNITE data', () => {
-		mock(mockedFS)
+		mock(MOCKED_FS)
 	})
 
 	after('Restore filesystem from mocks', () => {
@@ -158,8 +106,10 @@ export function useMockFS() {
 
 export const mockData = {
 	datasets,
-	heldItems,
-	mockedFS,
+	heldItemIDs: HELD_ITEM_IDS,
+	heldItems: HELD_ITEMS,
+	mockedFS: MOCKED_FS,
 	patches,
-	pokemon,
+	pokemon: POKEMON,
+	pokemonIDs: POKEMON_IDS,
 }
