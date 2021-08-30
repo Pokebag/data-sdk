@@ -6,11 +6,11 @@ import { expect } from 'chai'
 
 
 // Local imports
-import { getPatches } from '../src/getPatches.js'
+import { getPatches } from '../../src/api/getPatches.js'
 import {
 	mockData,
 	useMockFS,
-} from './test-helpers/useMockFS.js'
+} from '../test-helpers/useMockFS.js'
 
 
 

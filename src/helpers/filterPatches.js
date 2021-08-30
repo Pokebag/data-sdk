@@ -1,10 +1,3 @@
-// Local imports
-import { getPatches } from '../getPatches.js'
-
-
-
-
-
 /**
  * Returns a limited list of patch versions.
  *

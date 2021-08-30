@@ -9,8 +9,8 @@ import { expect } from 'chai'
 import {
 	mockData,
 	useMockFS,
-} from './test-helpers/useMockFS.js'
-import { getFile } from '../src/getFile.js'
+} from '../test-helpers/useMockFS.js'
+import { getFile } from '../../src/api/getFile.js'
 
 
 

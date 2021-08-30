@@ -9,9 +9,9 @@ import path from 'path'
 
 
 // Local imports
-import { filterPatches } from './helpers/filterPatches.js'
+import { filterPatches } from '../helpers/filterPatches.js'
 import { getPatches } from './getPatches.js'
-import { patchReduce } from './helpers/patchReduce.js'
+import { patchReduce } from '../helpers/patchReduce.js'
 
 
 

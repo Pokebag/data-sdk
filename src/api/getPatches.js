@@ -7,7 +7,7 @@ import { DATA_ROOT } from '@pokebag/pokemon-unite-data'
 
 
 // Local imports
-import { sortVersions } from './helpers/sortVersions.js'
+import { sortVersions } from '../helpers/sortVersions.js'
 
 
 
