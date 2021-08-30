@@ -45,19 +45,6 @@ describe('getSkills', function () {
 				})
 			})
 		})
-
-		xdescribe('options.patch', () => {
-			it('given a patch version, returns only skills that would be available in that patch', async () => {
-				// const POKEMON_IDS = ['crustle', 'zeraora']
-				// const POKEMON_DATA = POKEMON_IDS.map(id => mockData.pokemon[id])
-				// const RESPONSE = await getSkills({ ids: POKEMON_IDS })
-
-				// expect(RESPONSE).to.be.an('array')
-				// RESPONSE.forEach((item, index) => {
-				// 	expect(item).to.deep.equal(POKEMON_DATA[index])
-				// })
-			})
-		})
 	})
 
 	describe('with invalid arguments', () => {
