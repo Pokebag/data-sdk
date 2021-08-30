@@ -6,17 +6,16 @@
 
 [![Version][version-badge]][package]
 [![BSD-3-Clause License][license-badge]][license]
-[![Downloads][downloads-badge]][npmtrends]
-[![Bundle size][bundlephobia-badge]][bundlephobia]
+[![Code of Conduct][code-of-conduct-badge]][code-of-conduct]
+[![PRs Welcome][prs-badge]][prs]
+<!-- [![Downloads][downloads-badge]][npmtrends] -->
+<!-- [![Bundle size][bundlephobia-badge]][bundlephobia] -->
 
+[![Release status][release-status-badge]][release-status]
 [![Test status][test-status-badge]][test-status]
-[![Build status][release-status-badge]][release-status]
 [![Code Coverage][coveralls-badge]][coveralls]
 [![Dependencies][daviddm-badge]][daviddm]
 [![Maintainability][codeclimate-badge]][codeclimate]
-
-[![Code of Conduct][code-of-conduct-badge]][code-of-conduct]
-[![PRs Welcome][prs-badge]][prs]
 
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
@@ -92,7 +91,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 [coveralls]: https://coveralls.io/github/Pokebag/data-sdk
 [coveralls-badge]: https://img.shields.io/coveralls/Pokebag/data-sdk.svg?style=flat-square
 [daviddm]: https://david-dm.org/Pokebag/data-sdk
-[daviddm-badge]: https://img.shields.io/david/Pokebag/data-sdk.svg?style=flat-square
+[daviddm-badge]: https://img.shields.io/david/Pokebag/data-sdk?style=flat-square
 [downloads-badge]: https://img.shields.io/npm/dm/@pokebag/data-sdk.svg?style=flat-square
 [github-watch]: https://github.com/Pokebag/data-sdk/watchers
 [github-watch-badge]: https://img.shields.io/github/watchers/Pokebag/data-sdk.svg?style=social
