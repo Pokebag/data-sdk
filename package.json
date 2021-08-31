@@ -12,6 +12,14 @@
     "test": "nyc mocha --experimental-loader=@istanbuljs/esm-loader-hook",
     "semantic-release": "semantic-release"
   },
+  "peerDependencies": {
+    "@pokebag/pokemon-unite-data": "^1.x"
+  },
+  "dependencies": {
+    "chai-as-promised": "^7.1.1",
+    "dirname-filename-esm": "^1.1.1",
+    "lodash-es": "^4.17.21"
+  },
   "devDependencies": {
     "@istanbuljs/esm-loader-hook": "^0.1.2",
     "all-contributors-cli": "^6.20.0",
@@ -26,11 +34,5 @@
     "semantic-release-npm-deprecate-old-versions": "^1.1.6",
     "sinon": "^11.1.2",
     "tsd-jsdoc": "^2.5.0"
-  },
-  "dependencies": {
-    "@pokebag/pokemon-unite-data": "^1.1.1",
-    "chai-as-promised": "^7.1.1",
-    "dirname-filename-esm": "^1.1.1",
-    "lodash-es": "^4.17.21"
   }
 }
