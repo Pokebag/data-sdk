@@ -25,7 +25,7 @@
  * @typedef {Object} HeldItem
  * @property {string} displayName The display name of the item
  * @property {string} description A description of the item
- * @property {['attack'|'defense'|'other'|'score']} tags An array of tags that apply to the
+ * @property {string[]} tags An array of tags that apply to the
  * @property {Object} special An object containing information about the passive bonus provided by the item
  * @property {string} special.description A template string for the description of the item's passive bonus
  * @property {Object} special.boons An object representing the item's passive bonus and how it changes with the item's level
