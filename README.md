@@ -8,8 +8,6 @@
 [![BSD-3-Clause License][license-badge]][license]
 [![Code of Conduct][code-of-conduct-badge]][code-of-conduct]
 [![PRs Welcome][prs-badge]][prs]
-<!-- [![Downloads][downloads-badge]][npmtrends] -->
-<!-- [![Bundle size][bundlephobia-badge]][bundlephobia] -->
 
 [![Release status][release-status-badge]][release-status]
 [![Test status][test-status-badge]][test-status]
