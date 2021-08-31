@@ -2,7 +2,9 @@ name: GH Actions - Release
 on:
   workflow_run:
     workflows: ["Test"]
-    branches: [main]
+    branches:
+      - 'main'
+      - 'v*.x.x'
     types:
       - completed
 
