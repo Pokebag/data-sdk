@@ -1,5 +1,5 @@
-name: Test
-on: [pull_request]
+name: GH Actions - Test
+on: [push]
 
 jobs:
   test:
