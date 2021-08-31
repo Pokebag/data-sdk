@@ -11,11 +11,13 @@ This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908
 Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
 
 [npm][]:
+
 ```sh
 npm install @pokebag/data-sdk
 ```
 
 [Yarn][]:
+
 ```sh
 yarn add @pokebag/data-sdk
 ```
