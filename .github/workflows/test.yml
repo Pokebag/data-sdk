@@ -28,6 +28,9 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
+    - name: Install peer dependencies
+      run: yarn add @pokebag/pokemon-unite-data
+
     - name: Test
       run: yarn test
 
