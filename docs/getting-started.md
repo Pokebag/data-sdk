@@ -32,14 +32,21 @@ Alternatively, you can import the individual methods that you need:
 
 ```js
 import {
-  getDirectory,
-  getFile,
-  getPatches,
+  getHeldItems,
+  getPokemon,
+  getSkills,
 } from '@pokebag/data-sdk'
 ```
 
 Checkout the rest of our docs for more details on what you can do with the SDK!
 
+### Core Methods
+* [`getHeldItems`](./api/getHeldItems)
+* [`getPokemon`](./api/getPokemon)
+* [`getSkills`](./api/getSkills)
+
+### Low-level API
 * [`getDirectory`](./api/getDirectory)
+* [`getEntities`](./api/getEntities)
 * [`getFile`](./api/getFile)
 * [`getPatches`](./api/getPatches)

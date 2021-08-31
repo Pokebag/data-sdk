@@ -9,8 +9,8 @@ import { expect } from 'chai'
 import {
 	mockData,
 	useMockFS,
-} from './test-helpers/useMockFS.js'
-import { getDirectory } from '../src/getDirectory.js'
+} from '../test-helpers/useMockFS.js'
+import { getDirectory } from '../../src/api/getDirectory.js'
 
 
 
@@ -43,10 +43,7 @@ describe('getDirectory', function () {
 	})
 
 	it('returns the latest data if no version is provided', async () => {
-		const AVAILABLE_POKEMON = [
-			'charizard',
-			...mockData.pokemon,
-		].map(item => `${item}.json`)
+		const AVAILABLE_POKEMON = mockData.pokemonIDs.map(item => `${item}.json`)
 		const DIRECTORY_CONTENTS = await getDirectory('pokemon')
 
 		expect(DIRECTORY_CONTENTS).to.have.members(AVAILABLE_POKEMON)
@@ -56,23 +53,17 @@ describe('getDirectory', function () {
 		mockData.patches.forEach((patch, patchIndex) => {
 			describe(patch, () => {
 				it('returns available Pokémon', () => {
-					const AVAILABLE_POKEMON = [
-						'charizard',
-						...mockData.pokemon.slice(0, patchIndex + 1),
-					].map(item => `${item}.json`)
+					const AVAILABLE_POKEMON = mockData.pokemonIDs.slice(0, patchIndex + 2).map(item => `${item}.json`)
 					const PATCH_DIRECTORY_DATA = DIRECTORIES_DATA[patch]
 
-					expect(PATCH_DIRECTORY_DATA).to.have.ordered.members(AVAILABLE_POKEMON)
+					expect(PATCH_DIRECTORY_DATA).to.have.members(AVAILABLE_POKEMON)
 				})
 
 				it('doesn\'t return unavailable Pokémon', () => {
-					const UNAVAILABLE_POKEMON = [
-						'charizard',
-						...mockData.pokemon.slice(patchIndex + 1),
-					].map(item => `${item}.json`)
+					const UNAVAILABLE_POKEMON = mockData.pokemonIDs.slice(patchIndex + 2).map(item => `${item}.json`)
 					const PATCH_DIRECTORY_DATA = DIRECTORIES_DATA[patch]
 
-					expect(PATCH_DIRECTORY_DATA).to.not.have.ordered.members(UNAVAILABLE_POKEMON)
+					expect(PATCH_DIRECTORY_DATA).to.not.have.members(UNAVAILABLE_POKEMON)
 				})
 			})
 		})

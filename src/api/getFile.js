@@ -9,9 +9,9 @@ import path from 'path'
 
 
 // Local imports
-import { filterPatches } from './helpers/filterPatches.js'
+import { filterPatches } from '../helpers/filterPatches.js'
 import { getPatches } from './getPatches.js'
-import { patchReduce } from './helpers/patchReduce.js'
+import { patchReduce } from '../helpers/patchReduce.js'
 
 
 
@@ -23,9 +23,9 @@ import { patchReduce } from './helpers/patchReduce.js'
  * @param {string} file Relative path to a file inside of the dataset
  * @param {string} version The version of the dataset to use
  *
- * @returns {Promise<Record<string,*>>} An array containing a compiled version of the contents of the requested directory
+ * @returns {Promise<Object>} An array containing a compiled version of the contents of the requested directory
  */
- export async function getFile(file, version = 'latest') {
+export async function getFile(file, version = 'latest') {
 	const PATCHES = await getPatches()
 	const FILTERED_PATCHES = await filterPatches(PATCHES, version)
 

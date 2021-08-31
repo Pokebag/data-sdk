@@ -3,11 +3,18 @@
 * [Introduction](./README.md)
 * [Getting Started](docs/getting-started.md)
 
-## API
-* [`getPatches`](docs/api/getPatches.md)
+## Core Methods
+* [`getHeldItems`](docs/api/getHeldItems.md)
+* [`getPokemon`](docs/api/getPokemon.md)
+* [`getSkills`](docs/api/getSkills.md)
+
+### Low-Level API
 * [`getDirectory`](docs/api/getDirectory.md)
+* [`getEntities`](docs/api/getEntities.md)
 * [`getFile`](docs/api/getFile.md)
+* [`getPatches`](docs/api/getPatches.md)
 
 ## Other Important Stuff
 
 * [Code of Conduct](./CODE_OF_CONDUCT.md)
+* [License](./LICENSE)
