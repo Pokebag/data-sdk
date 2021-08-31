@@ -13,11 +13,13 @@ Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
 This package also relies on the [`@pokebag/pokemon-unite-data`](https://npmjs.com/package/@pokebag/pokemon-unite-data), so you must install both packages:
 
 [npm][]:
+
 ```sh
 npm install @pokebag/data-sdk @pokebag/pokemon-unite-data
 ```
 
 [Yarn][]:
+
 ```sh
 yarn add @pokebag/data-sdk @pokebag/pokemon-unite-data
 ```
