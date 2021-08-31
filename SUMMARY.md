@@ -2,6 +2,7 @@
 
 * [Introduction](./README.md)
 * [Getting Started](docs/getting-started.md)
+* [Changelog](docs/CHANGELOG.md)
 
 ## Core Methods
 * [`getHeldItems`](docs/api/getHeldItems.md)
