@@ -42,6 +42,11 @@ export async function getSkills(options) {
 	}
 
 	const ALL_SKILLS = await getDirectory('skills', patch)
+
+	/**
+	 * @memberof module:@pokebag/data-sdk.exports.getSkills
+	 * @type {Object}
+	 */
 	const RESPONSE = {}
 
 	let index = 0
