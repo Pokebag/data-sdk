@@ -20,6 +20,7 @@ import { patchReduce } from '../helpers/patchReduce.js'
 /**
  * Returns the contents of a file for a particular version in the dataset.
  *
+ * @memberof module:@pokebag/data-sdk
  * @param {string} file Relative path to a file inside of the dataset
  * @param {string} version The version of the dataset to use
  *

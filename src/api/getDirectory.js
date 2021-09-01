@@ -19,6 +19,7 @@ import { patchReduce } from '../helpers/patchReduce.js'
 /**
  * Returns the contents of a directory for a particular version in the dataset.
  *
+ * @memberof module:@pokebag/data-sdk
  * @param {string} directory Relative path to a directory inside of the dataset
  * @param {string} [version=latest] The version of the dataset to use
  *
