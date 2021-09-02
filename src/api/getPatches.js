@@ -16,6 +16,8 @@ import { sortVersions } from '../helpers/sortVersions.js'
 /**
  * Returns a list of all patches currently available in the dataset.
  *
+ * @memberof module:@pokebag/data-sdk
+ *
  * @returns {Promise<string[]>} A list of all available patches
  */
 export async function getPatches() {

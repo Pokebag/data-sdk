@@ -56,6 +56,7 @@ async function getIDs(options) {
 /**
  * Returns data for entities
  *
+ * @memberof module:@pokebag/data-sdk
  * @param {Object} options An object containing filtering options
  * @param {string[]} [options.ids] Array of entity IDs to be returned
  * @param {string} [options.patch] Maximum patch version to return data for
