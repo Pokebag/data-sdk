@@ -47,7 +47,7 @@ describe('getSkills', function () {
 		})
 
 		describe('options.pokemonIDs', () => {
-			it('given an array of Pokémon IDs, returns all skills that belong to the listed Pokémon', async () => {
+			it('given an array of Pokémon IDs, returns only skills that belong to the listed Pokémon', async () => {
 				const POKEMON_IDS = ['crustle', 'garchomp']
 				const SKILL_DATA = Object.entries(mockData.skills)
 					.filter(([skillID]) => {
@@ -58,13 +58,10 @@ describe('getSkills', function () {
 					.map(([_, skillData]) => skillData)
 				const RESPONSE = await getSkills({ pokemonIDs: POKEMON_IDS })
 
-				expect(RESPONSE).to.be.an('object')
-					.and.to.have.all.keys(POKEMON_IDS)
-
-				const ALL_SKILLS_FROM_RESPONSE = Object.values(RESPONSE).flat()
+				expect(RESPONSE).to.be.an('array')
 
 				SKILL_DATA.forEach(skill => {
-					expect(ALL_SKILLS_FROM_RESPONSE).to.deep.include(skill)
+					expect(RESPONSE).to.deep.include(skill)
 				})
 			})
 		})
