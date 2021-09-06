@@ -40,7 +40,9 @@ export async function getPokemon(options) {
 		})
 
 		POKEMON.forEach(pokemon => {
-			pokemon.skills = SKILLS[pokemon.id]
+			pokemon.skills = SKILLS.filter(skill => {
+				return skill.pokemonID === pokemon.id
+			})
 		})
 	}
 

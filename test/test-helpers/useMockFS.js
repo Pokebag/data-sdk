@@ -80,6 +80,7 @@ const SKILLS = SKILL_IDS.reduce((accumulator, id, index) => {
 			return match.toUpperCase().replace('-', ' ')
 		}),
 		id,
+		pokemonID: id.split('-')[0],
 		value1: index,
 		value2: 20,
 	}

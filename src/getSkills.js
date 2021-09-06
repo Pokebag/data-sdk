@@ -18,7 +18,7 @@ import {
  * @param {string} [options.patch] Maximum patch version to return data for
  * @param {string[]} [options.pokemonIDs] Array of Pokémon IDs to whom the returned skills must belong
  *
- * @returns {Promise<Skill[]|Object>} An array containing data for each item requested
+ * @returns {Promise<Skill[]>} An array containing data for each item requested
  */
 export async function getSkills(options) {
 	if ((typeof options?.pokemonIDs === 'undefined')) {
@@ -41,28 +41,25 @@ export async function getSkills(options) {
 		throw new TypeError('ids and pokemonIDs may not be used together; you must choose one')
 	}
 
-	const ALL_SKILLS = await getDirectory('skills', patch)
+	const ALL_SKILL_IDS = await getDirectory('skills', patch)
 
-	/**
-	 * @memberof module:@pokebag/data-sdk.exports.getSkills
-	 * @type {Object}
-	 */
-	const RESPONSE = {}
-
+	let response = []
 	let index = 0
 
 	while (index < pokemonIDs.length) {
 		const pokemonID = pokemonIDs[index]
-		const SKILL_IDS = ALL_SKILLS.filter(skill => skill.startsWith(pokemonID))
+		const SKILL_IDS = ALL_SKILL_IDS.filter(skill => skill.startsWith(pokemonID))
 
-		RESPONSE[pokemonID] = await getEntities({
+		const SKILLS = await getEntities({
 			...options,
 			ids: SKILL_IDS,
 			type: 'skills',
 		})
 
+		response = response.concat(SKILLS)
+
 		index += 1
 	}
 
-	return RESPONSE
+	return response
 }
