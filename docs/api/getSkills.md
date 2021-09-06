@@ -64,8 +64,7 @@ async function getSpecificSkills() {
 }
 
 getSpecificSkills()
-// Logs an array  with keys representing the pokemon in the `pokemonIDs` array,
-// the values of which will includes all ofthe skills for each requested Pokémon
+// Logs an array of only skills that belong to Crustle or Pikachu.
 ```
 
 ## Options
