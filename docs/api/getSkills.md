@@ -40,7 +40,7 @@ async function getSomeSkills() {
 }
 
 getSomeSkills()
-// Logs an array with data for the Buddy Barrier and Score Shield held items
+// Logs an array that only includes Absol's Night Slash+ and Psycho Cut+ skills.
 ```
 
 ### Get Skills for a Specific Pokémon
@@ -64,8 +64,7 @@ async function getSpecificSkills() {
 }
 
 getSpecificSkills()
-// Logs an object with keys representing the pokemon in the `pokemonIDs` array,
-// the values of which will includes all ofthe skills for each requested Pokémon
+// Logs an array of only skills that belong to Crustle or Pikachu.
 ```
 
 ## Options
