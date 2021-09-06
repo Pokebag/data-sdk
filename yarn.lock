@@ -1461,7 +1461,7 @@ __metadata:
   resolution: "@pokebag/data-sdk@workspace:."
   dependencies:
     "@istanbuljs/esm-loader-hook": ^0.1.2
-    "@pokebag/pokemon-unite-data": ^1.1.4
+    "@pokebag/pokemon-unite-data": ^1.2.0
     "@semantic-release/changelog": ^5.0.1
     all-contributors-cli: ^6.20.0
     chai: ^4.3.4
@@ -1479,16 +1479,16 @@ __metadata:
     sinon: ^11.1.2
     tsd-jsdoc: ^2.5.0
   peerDependencies:
-    "@pokebag/pokemon-unite-data": ^1.1.4
+    "@pokebag/pokemon-unite-data": ^1.2.0
   languageName: unknown
   linkType: soft
 
-"@pokebag/pokemon-unite-data@npm:^1.1.4":
-  version: 1.1.4
-  resolution: "@pokebag/pokemon-unite-data@npm:1.1.4"
+"@pokebag/pokemon-unite-data@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@pokebag/pokemon-unite-data@npm:1.2.0"
   dependencies:
     dirname-filename-esm: ^1.1.1
-  checksum: 1db50a103d3c7a75ab424dbb8125230b798b43e0a0042016ab2209425a79b743542b604d8e25f8702a0fbbfaeaece128d4c0085468b5bfdd8d5dc756bb409f92
+  checksum: 03039108550b1586e7f4222b855a5dfc4c4c4880f8ab7a7a447e5657bee3bcfc7a1197fa76ca39006773f9aa1bb175e8b98365057c720032688f6409dbb07d23
   languageName: node
   linkType: hard
 
