@@ -8,15 +8,15 @@ import { getSkills } from './getSkills.js'
 
 
 /**
- * Returns data for held items
+ * Returns data for Pokémon
  *
  * @memberof module:@pokebag/data-sdk
  * @param {Object} [options] An object containing filtering options
- * @param {string[]} [options.ids] Array of item IDs to be returned
+ * @param {string[]} [options.ids] Array of Pokémon IDs to be returned
  * @param {boolean} [options.includeSkills] Flag to include the Pokémon's skills in the response
  * @param {string} [options.patch] Maximum patch version to return data for
  *
- * @returns {Promise<Pokemon[]>} An array containing data for each item requested
+ * @returns {Promise<Pokemon[]>} An array containing data for each Pokémon requested
  */
 export async function getPokemon(options) {
 	const POKEMON = await getEntities({
