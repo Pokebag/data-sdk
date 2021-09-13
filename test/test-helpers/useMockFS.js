@@ -14,6 +14,21 @@ import { generatePatchData } from './generatePatchData.js'
 
 
 // Constants
+const ENUM_TYPES = [
+	'pokemon-skill-slot',
+	'pokemon-skill-type',
+]
+const ENUMS = ENUM_TYPES.reduce((accumulator, type) => {
+	const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+	accumulator[type] = alphabet.split('').reduce((accumulator, character, index) => {
+		accumulator[index] = character
+		return accumulator
+	}, {})
+
+	return accumulator
+}, {})
+
 const HELD_ITEM_IDS = [
 	'aeos-cookie',
 	'attack-weight',
@@ -99,6 +114,7 @@ const MOCKED_FS = {
 		}
 
 		const [key, data] = generatePatchData(((index === 0) ? 'base' : String(index)), {
+			'enums': Object.entries(ENUMS).reduce(reducer, {}),
 			'held-items': Object.entries(HELD_ITEMS).reduce(reducer, {}),
 			pokemon: Object.entries(POKEMON).reduce(reducer, {}),
 			skills: Object.entries(SKILLS).reduce(reducer, {}),
@@ -132,6 +148,8 @@ export function useMockFS() {
 
 export const mockData = {
 	datasets,
+	enums: ENUMS,
+	enumTypes: ENUM_TYPES,
 	heldItemIDs: HELD_ITEM_IDS,
 	heldItems: HELD_ITEMS,
 	mockedFS: MOCKED_FS,
