@@ -13,7 +13,7 @@
     "semantic-release": "semantic-release"
   },
   "peerDependencies": {
-    "@pokebag/pokemon-unite-data": "^1.1.4"
+    "@pokebag/pokemon-unite-data": "^2.0.0"
   },
   "devDependencies": {
     "@istanbuljs/esm-loader-hook": "^0.1.2",
