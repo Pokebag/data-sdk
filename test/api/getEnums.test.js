@@ -33,10 +33,7 @@ describe('getEnums', function () {
 				})
 
 				expect(RESPONSE).to.be.an('object')
-					.and.to.deep.equal('abcdefghijklmnopqrstuvwxyz'.split('').reduce((accumulator, character, index) => {
-						accumulator[index] = character
-						return accumulator
-					}, {}))
+					.and.to.deep.equal(mockData.enums[mockData.enumTypes[0]])
 			})
 		})
 	})

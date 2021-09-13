@@ -18,16 +18,27 @@ const ENUM_TYPES = [
 	'pokemon-skill-slot',
 	'pokemon-skill-type',
 ]
-const ENUMS = ENUM_TYPES.reduce((accumulator, type) => {
-	const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+const ENUMS = {
+	'pokemon-skill-slot': {
+		0: 'Passive',
+		1: 'Basic',
+		2: 'Move 1',
+		3: 'Move 2',
+		4: 'Unite Move',
+	},
 
-	accumulator[type] = alphabet.split('').reduce((accumulator, character, index) => {
-		accumulator[index] = character
-		return accumulator
-	}, {})
-
-	return accumulator
-}, {})
+	'pokemon-skill-type': {
+		0: 'Dash',
+		1: 'Melee',
+		2: 'Hindrance',
+		3: 'Area',
+		4: 'Ranged',
+		5: 'Buff',
+		6: 'Recovery',
+		7: 'Sure Hit',
+		8: 'Debuff',
+	},
+}
 
 const HELD_ITEM_IDS = [
 	'aeos-cookie',
