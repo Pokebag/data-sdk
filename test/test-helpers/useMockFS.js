@@ -14,6 +14,32 @@ import { generatePatchData } from './generatePatchData.js'
 
 
 // Constants
+const ENUM_TYPES = [
+	'pokemon-skill-slot',
+	'pokemon-skill-type',
+]
+const ENUMS = {
+	'pokemon-skill-slot': {
+		0: 'Passive',
+		1: 'Basic',
+		2: 'Move 1',
+		3: 'Move 2',
+		4: 'Unite Move',
+	},
+
+	'pokemon-skill-type': {
+		0: 'Dash',
+		1: 'Melee',
+		2: 'Hindrance',
+		3: 'Area',
+		4: 'Ranged',
+		5: 'Buff',
+		6: 'Recovery',
+		7: 'Sure Hit',
+		8: 'Debuff',
+	},
+}
+
 const HELD_ITEM_IDS = [
 	'aeos-cookie',
 	'attack-weight',
@@ -76,13 +102,46 @@ const SKILL_IDS = [
 ]
 const SKILLS = SKILL_IDS.reduce((accumulator, id, index) => {
 	accumulator[id] = {
+		choice: Math.floor(2 * Math.random()),
+		cooldown: 0,
+		description: '',
 		displayName: id.replace(/(?:^\w|-\w)/g, match => {
 			return match.toUpperCase().replace('-', ' ')
 		}),
 		id,
+		level: Math.floor(15 * Math.random()) + 1,
+		parentID: null,
 		pokemonID: id.split('-')[0],
+		slot: Math.floor(5 * Math.random()),
+		tier: Math.floor(3 * Math.random()),
+		type: Math.floor(9 * Math.random()),
+		upgradeIDs: [],
 		value1: index,
 		value2: 20,
+	}
+
+	return accumulator
+}, {})
+
+const RSB_IDS = SKILL_IDS.map(skillID => {
+	return `${skillID}-rsb`
+})
+const RSBS = RSB_IDS.reduce((accumulator, id, index) => {
+	const SKILL_ID = SKILL_IDS[index]
+	const SKILL = SKILLS[SKILL_ID]
+	accumulator[id] = {
+		id,
+		pokemonID: SKILL.pokemonID,
+		hits: [
+			{
+				base: Math.round(Math.random() * 100) + 1,
+				damageType: 'Atk',
+				label: 'Damage',
+				ratio: Math.round(Math.random() * 100) + 1,
+				slider: Math.round(Math.random() * 100) + 1,
+			},
+		],
+		skillID: SKILL.id,
 	}
 
 	return accumulator
@@ -99,8 +158,10 @@ const MOCKED_FS = {
 		}
 
 		const [key, data] = generatePatchData(((index === 0) ? 'base' : String(index)), {
+			'enums': Object.entries(ENUMS).reduce(reducer, {}),
 			'held-items': Object.entries(HELD_ITEMS).reduce(reducer, {}),
 			pokemon: Object.entries(POKEMON).reduce(reducer, {}),
+			rsbs: Object.entries(RSBS).reduce(reducer, {}),
 			skills: Object.entries(SKILLS).reduce(reducer, {}),
 		})
 
@@ -132,12 +193,16 @@ export function useMockFS() {
 
 export const mockData = {
 	datasets,
+	enums: ENUMS,
+	enumTypes: ENUM_TYPES,
 	heldItemIDs: HELD_ITEM_IDS,
 	heldItems: HELD_ITEMS,
 	mockedFS: MOCKED_FS,
 	patches,
 	pokemon: POKEMON,
 	pokemonIDs: POKEMON_IDS,
+	rsbIDs: RSB_IDS,
+	rsbs: RSBS,
 	skillIDs: SKILL_IDS,
 	skills: SKILLS,
 }

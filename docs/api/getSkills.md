@@ -67,10 +67,29 @@ getSpecificSkills()
 // Logs an array of only skills that belong to Crustle or Pikachu.
 ```
 
+### Disable parsing of enums
+
+By default, `getSkills` will parse the `slot` and `type` fields to their representational strings (e.g. `'Move 1'` / `'Move 2'` and `'Dash'` / `'Area'`, respectively). If you would prefer to render these strings yourself, you can pass `parseEnums: false`:
+
+```js
+import { getSkills } from '@pokebag/data-sdk'
+
+async function getSpecificSkills() {
+  const skills = await getSkills({ parseEnums: false })
+
+  console.log(skills)
+}
+
+getSpecificSkills()
+// Logs an array of skills where `skill` and `type` will be represented by
+// their enums, rather than their strings.
+```
+
 ## Options
 
-| Option        | Required  | Default     | Description                                           |
-|---------------|-----------|-------------|-------------------------------------------------------|
-| `ids`         | no        | `undefined` | An array of skill IDs to be retrieved.                |
-| `pokemonIDs`  | no        | `undefined` | An array of Pokémon IDs to filter the skill results.  |
-| `patch`       | no        | `'latest'`  | The maximum patch version to return data for.         |
+| Option        | Required  | Default     | Description                                                                  |
+|---------------|-----------|-------------|------------------------------------------------------------------------------|
+| `ids`         | no        | `undefined` | An array of skill IDs to be retrieved.                                       |
+| `pokemonIDs`  | no        | `undefined` | An array of Pokémon IDs to filter the skill results.                         |
+| `parseEnums`  | no        | `true`      | If `true`, parses `slot` and `type` fields to their representational strings |
+| `patch`       | no        | `'latest'`  | The maximum patch version to return data for.                                |
