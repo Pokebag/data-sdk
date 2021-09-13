@@ -103,6 +103,30 @@ const SKILLS = SKILL_IDS.reduce((accumulator, id, index) => {
 	return accumulator
 }, {})
 
+const RSB_IDS = SKILL_IDS.map(skillID => {
+	return `${skillID}-rsb`
+})
+const RSBS = RSB_IDS.reduce((accumulator, id, index) => {
+	const SKILL_ID = SKILL_IDS[index]
+	const SKILL = SKILLS[SKILL_ID]
+	accumulator[id] = {
+		id,
+		pokemonID: SKILL.pokemonID,
+		hits: [
+			{
+				base: Math.round(Math.random() * 100) + 1,
+				damageType: 'Atk',
+				label: 'Damage',
+				ratio: Math.round(Math.random() * 100) + 1,
+				slider: Math.round(Math.random() * 100) + 1,
+			},
+		],
+		skillID: SKILL.id,
+	}
+
+	return accumulator
+}, {})
+
 const MOCKED_FS = {
 	[DATA_ROOT]: Array(10).fill(null).reduce((accumulator, _, index) => {
 		function reducer(accumulator, [key, value], itemIndex) {
@@ -117,6 +141,7 @@ const MOCKED_FS = {
 			'enums': Object.entries(ENUMS).reduce(reducer, {}),
 			'held-items': Object.entries(HELD_ITEMS).reduce(reducer, {}),
 			pokemon: Object.entries(POKEMON).reduce(reducer, {}),
+			rsbs: Object.entries(RSBS).reduce(reducer, {}),
 			skills: Object.entries(SKILLS).reduce(reducer, {}),
 		})
 
@@ -156,6 +181,8 @@ export const mockData = {
 	patches,
 	pokemon: POKEMON,
 	pokemonIDs: POKEMON_IDS,
+	rsbIDs: RSB_IDS,
+	rsbs: RSBS,
 	skillIDs: SKILL_IDS,
 	skills: SKILLS,
 }
