@@ -102,11 +102,20 @@ const SKILL_IDS = [
 ]
 const SKILLS = SKILL_IDS.reduce((accumulator, id, index) => {
 	accumulator[id] = {
+		choice: Math.floor(2 * Math.random()),
+		cooldown: 0,
+		description: '',
 		displayName: id.replace(/(?:^\w|-\w)/g, match => {
 			return match.toUpperCase().replace('-', ' ')
 		}),
 		id,
+		level: Math.floor(15 * Math.random()) + 1,
+		parentID: null,
 		pokemonID: id.split('-')[0],
+		slot: Math.floor(5 * Math.random()),
+		tier: Math.floor(3 * Math.random()),
+		type: Math.floor(9 * Math.random()),
+		upgradeIDs: [],
 		value1: index,
 		value2: 20,
 	}
