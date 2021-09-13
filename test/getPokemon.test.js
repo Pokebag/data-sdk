@@ -10,6 +10,7 @@ import {
 	mockData,
 	useMockFS,
 } from './test-helpers/useMockFS.js'
+import { parseSkillEnums } from './test-helpers/parseSkillEnums.js'
 import { getPokemon } from '../src/getPokemon.js'
 
 
@@ -51,12 +52,12 @@ describe('getPokemon', function () {
 				const POKEMON_ID = 'crustle'
 				const POKEMON_DATA = {
 					...mockData.pokemon[POKEMON_ID],
-					skills: Object.values(mockData.skills).reduce((accumulator, skill) => {
+					skills: await parseSkillEnums(Object.values(mockData.skills).reduce((accumulator, skill) => {
 						if (skill.id.startsWith(POKEMON_ID)) {
 							accumulator.push(skill)
 						}
 						return accumulator
-					}, []),
+					}, [])),
 				}
 				const RESPONSE = await getPokemon({
 					ids: [POKEMON_ID],
