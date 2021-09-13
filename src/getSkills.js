@@ -21,7 +21,7 @@ import {
  * @returns {Promise<Skill[]>} An array containing data for each item requested
  */
 export async function getSkills(options) {
-	if ((typeof options?.pokemonIDs === 'undefined')) {
+	if (typeof options?.pokemonIDs === 'undefined') {
 		return getEntities({
 			...(options || {}),
 			type: 'skills',
