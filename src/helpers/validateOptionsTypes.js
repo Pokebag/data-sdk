@@ -31,6 +31,19 @@ function validateNegation(optionsDict, key, value, notInPresenceOf) {
 }
 
 /**
+ * Validate array type values
+ *
+ * @param {string} key
+ * @param {*} value
+ * @param {string} type
+ */
+function validateTypeArray(key, value) {
+	if (typeof value !== 'undefined' && !Array.isArray(value)) {
+		throw new TypeError(`${key} must be an array`)
+	}
+}
+
+/**
  * Validate the type of a single options key
  *
  * @param {string} key
@@ -38,19 +51,10 @@ function validateNegation(optionsDict, key, value, notInPresenceOf) {
  * @param {string} type
  */
 function validateType(key, value, type) {
-	if (typeof value !== 'undefined') {
-		switch (type) {
-			case 'array':
-				if (!Array.isArray(value)) {
-					throw new TypeError(`${key} must be an array`)
-				}
-				break
-
-			default:
-				if (typeof value !== type) {
-					throw new TypeError(`${key} must be a boolean`)
-				}
-		}
+	if (type === 'array') {
+		validateTypeArray(key, value)
+	} else if (typeof value !== 'undefined' && typeof value !== type) {
+		throw new TypeError(`${key} must be a ${type}`)
 	}
 }
 
@@ -61,11 +65,11 @@ function validateType(key, value, type) {
  * @param {Object} validationOptions
  */
 export function validateOptionsTypes(optionsDict, validationOptions) {
-	Object.entries(optionsDict).forEach(([key, value]) => {
-		const validationOptionsDict = validationOptions[key]
+	Object.entries(validationOptions).forEach(([key, validationOptionsDict]) => {
+		const value = optionsDict[key]
 
-		if (!validationOptionsDict) {
-			return
+		if (validationOptionsDict.isRequired) {
+			validateExistence(key, value)
 		}
 
 		if (validationOptionsDict.isRequired) {
