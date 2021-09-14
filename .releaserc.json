@@ -1,7 +1,11 @@
 {
   "branches": [
-    "main",
-    "v+([0-9]).x.x"
+    {
+      "name": "main",
+      "channel": false,
+      "main": true
+    },
+    { "name": "v+([0-9]).x.x" }
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
