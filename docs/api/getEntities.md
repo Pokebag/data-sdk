@@ -2,7 +2,8 @@
 
 `getEntities` does most of the heavy lifting for our higher-level API.
 
-_**NOTE:**_ You should probably be using [`getHeldItems`](./getHeldItems.md), [`getPokemon`](./getPokemon.md), or [`getSkills`](./getSkills.md) instead.
+> **⚠️ NOTE ⚠️**
+> You should probably be using [`getHeldItems`](./getHeldItems.md), [`getPokemon`](./getPokemon.md), or [`getSkills`](./getSkills.md) instead.
 
 ```js
 import { getEntities } from '@pokebag/data-sdk'

@@ -47,10 +47,12 @@ Checkout the rest of our docs for more details on what you can do with the SDK!
 ### Core Methods
 * [`getHeldItems`](./api/getHeldItems)
 * [`getPokemon`](./api/getPokemon)
+* [`getRSBs`](./api/getRSBs)
 * [`getSkills`](./api/getSkills)
 
 ### Low-level API
 * [`getDirectory`](./api/getDirectory)
 * [`getEntities`](./api/getEntities)
+* [`getEnums`](./api/getEnums)
 * [`getFile`](./api/getFile)
 * [`getPatches`](./api/getPatches)

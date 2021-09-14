@@ -2,6 +2,9 @@
 
 `getRSBs` allows the retrieval of data for all RSBs, or for a subset of RSBs.
 
+> **⚠️ NOTE ⚠️**
+> If you need both skills and RSBs, consider using [`getSkills`](./getSkills.md) with the `includeRSBs` option.
+
 ## Examples
 
 ### Get All RSBs

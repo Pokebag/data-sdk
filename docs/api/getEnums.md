@@ -3,7 +3,7 @@
 `getEnums` returns `enum`s for the dataset. This is useful for parsing representatoinal fields into their official strings.
 
 > **⚠️ NOTE ⚠️**
-> If you just need to parse the `slot` and `type` of skills returned from `getSkills`, you should probably just pass the `parseEnums` option to `getSkills`.
+> If you just need to parse the `slot` and `type` of skills returned from [`getSkills`](./getSkills.md), you should probably use `getSkills` with the `parseEnums` option.
 
 ## Examples
 
