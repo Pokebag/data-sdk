@@ -47,6 +47,17 @@ describe('getSkills', function () {
 			})
 		})
 
+		describe('options.includeRSBs', () => {
+			it('given true, returns skills with their RSBs attached', async () => {
+				const RESPONSE = await getSkills({ includeRSBs: true })
+
+				RESPONSE.forEach(item => {
+					const rsb = mockData.rsbs[`${item.id}-rsb`]
+					expect(item.rsb).to.deep.equal(rsb)
+				})
+			})
+		})
+
 		describe('options.parseEnums', () => {
 			it('given true, returns each skill with enumerable properties parsed to their string values', async () => {
 				const RESPONSE = await getSkills({ parseEnums: true })

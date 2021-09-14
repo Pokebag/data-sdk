@@ -8,6 +8,7 @@
  * @property {string} id The skill's ID, prefixed by the name of the Pokémon to whom the skill belongs
  * @property {string} pokemonID The ID of the Pokémon to whom the skill belongs
  * @property {string[]} requires A list of requirements that must be met for a Pokémon to be allowed to have the skill
+ * @property {RSB} [rsb] The RSB associated with this skill
  * @property {number} slot The slot in which this ability can be set
  * @property {number} type The attack category of this skill
  */
