@@ -5,10 +5,28 @@ import {
 	getEnums,
 	getEntities,
 } from './api/index.js'
+import { getRSBs } from './getRSBs.js'
+import { validateOptionsTypes } from './helpers/validateOptionsTypes.js'
 
 
 
 
+
+/**
+ * Loops through an array of skills and any known RSBs
+ *
+ * @param {Skill[]} skills
+ */
+async function addRSBs(skills) {
+	const RSBS = await getRSBs({
+		skillIDs: skills.map(skill => skill.id)
+	})
+
+	RSBS.forEach(rsb => {
+		const skill = skills.find(skill => (skill.id === rsb.skillID))
+		skill.rsb = rsb
+	})
+}
 
 /**
  * Gets data for a subset of skills belonging to a specific list of Pokémon
@@ -22,18 +40,9 @@ import {
  */
 async function getSkillsByPokemonIDs(options) {
 	const {
-		ids,
 		patch,
 		pokemonIDs,
 	} = options
-
-	if (!Array.isArray(pokemonIDs)) {
-		throw new TypeError('pokemonIDs must be an array')
-	}
-
-	if (typeof ids !== 'undefined') {
-		throw new TypeError('ids and pokemonIDs may not be used together; you must choose one')
-	}
 
 	const ALL_SKILL_IDS = await getDirectory('skills', patch)
 
@@ -85,6 +94,7 @@ async function parseSkillEnums(skills) {
  * @memberof module:@pokebag/data-sdk
  * @param {Object} [options={}] An object containing filtering options
  * @param {string[]} [options.ids] Array of skill IDs to be returned
+ * @param {boolean} [options.includeRSBs=false] Whether or not include RSBs
  * @param {boolean} [options.parseEnums=true] Whether or not parse enumerable properties
  * @param {string} [options.patch] Maximum patch version to return data for
  * @param {string[]} [options.pokemonIDs] Array of Pokémon IDs to whom the returned skills must belong
@@ -95,15 +105,21 @@ export async function getSkills(options = {}) {
 	const {
 		parseEnums = true,
 		pokemonIDs,
+		includeRSBs = false,
 	} = options
 
-	if ((typeof parseEnums !== 'undefined') && (typeof parseEnums !== 'boolean')) {
-		throw new TypeError('parseEnums must be a boolean')
-	}
+	validateOptionsTypes(options, {
+		parseEnums: { type: 'boolean' },
+		pokemonIDs: {
+			notInPresenceOf: ['ids'],
+			type: 'array',
+		},
+		includeRSBs: { type: 'boolean' },
+	})
 
 	let skills = null
 
-	if (typeof pokemonIDs !== 'undefined') {
+	if (pokemonIDs) {
 		skills = await getSkillsByPokemonIDs(options)
 	} else {
 		skills = await getEntities({
@@ -114,6 +130,10 @@ export async function getSkills(options = {}) {
 
 	if (parseEnums) {
 		await parseSkillEnums(skills)
+	}
+
+	if (includeRSBs) {
+		await addRSBs(skills)
 	}
 
 	return skills

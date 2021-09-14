@@ -90,6 +90,7 @@ getSpecificSkills()
 | Option        | Required  | Default     | Description                                                                  |
 |---------------|-----------|-------------|------------------------------------------------------------------------------|
 | `ids`         | no        | `undefined` | An array of skill IDs to be retrieved.                                       |
+| `includeRSBs` | no        | `false`     | If true, adds the skill's RSB to the `rsb` field                             |
 | `pokemonIDs`  | no        | `undefined` | An array of Pokémon IDs to filter the skill results.                         |
 | `parseEnums`  | no        | `true`      | If `true`, parses `slot` and `type` fields to their representational strings |
 | `patch`       | no        | `'latest'`  | The maximum patch version to return data for.                                |
